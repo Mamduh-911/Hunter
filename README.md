@@ -37,7 +37,7 @@ cd Hunter
 ## تثبيت متطلبات Python
 
 ```bash
-pip3 install -r requirements.txt
+pip3 install -r requirements.py
 ```
 
 ## الأدوات الاختيارية (موصى بها)
