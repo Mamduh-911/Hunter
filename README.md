@@ -38,6 +38,10 @@
 ```bash
 git clone https://github.com/Mamduh-911/Hunter.git
 cd Hunter
+python3 hunter.py
+https://example.com
+y/n
+y
 ```
 
 ## تثبيت المتطلبات
