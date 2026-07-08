@@ -11,7 +11,7 @@
 
 ```bash
 # 1. استنساخ المستودع إلى جهازك 
-git clone [https://github.com/Mamduh-911/Hunter-Scanner.git](https://github.com/Mamduh-911/Hunter-Scanner.git)
+git clone https://github.com/Mamduh-911/Hunter-Scanner.git
 
 # 2. الدخول إلى مجلد الأداة والتشغيل
 cd Hunter-Scanner
