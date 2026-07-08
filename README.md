@@ -1,8 +1,13 @@
 # 👾 HUNTER v4.2 - أداة صيد الثغرات الاحترافية المتكاملة
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Platform](https://img.shields.io/badge/Platform-Linux-red)
+![Version](https://img.shields.io/badge/Version-v4.2-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 **HUNTER** هي أداة مفتوحة المصدر مكتوبة بلغة **Python**، صُممت لمساعدة الباحثين الأمنيين ومختبري الاختراق في برامج **Bug Bounty** على تنفيذ عمليات الاستكشاف (Reconnaissance) واكتشاف المؤشرات الأولية للثغرات بطريقة آمنة ومنظمة، دون تنفيذ أي استغلال آلي.
 
-> ⚠️ الأداة مخصصة للاستكشاف والكشف فقط، ولا تقوم بتنفيذ عمليات استغلال تلقائية.
+> ⚠️ **الأداة مخصصة للاستكشاف والكشف فقط، ولا تقوم بتنفيذ عمليات استغلال تلقائية.**
 
 ---
 
@@ -20,8 +25,9 @@
 - 🌍 جمع النطاقات الفرعية
 - 📚 جمع روابط Wayback Machine
 - 📋 إنشاء تقارير HTML تفاعلية
-- 🎯 دعم التكامل مع Burp Suite
-- ⚡ وضعي فحص: سريع وشامل
+- 🎯 التكامل مع Burp Suite
+- ⚡ وضع الفحص السريع (Rapid)
+- 🚀 وضع الفحص الشامل (Comprehensive)
 
 ---
 
@@ -34,15 +40,15 @@ git clone https://github.com/Mamduh-911/Hunter.git
 cd Hunter
 ```
 
-## تثبيت متطلبات Python
+## تثبيت المتطلبات
 
 ```bash
-pip3 install -r requirements.py
+pip3 install -r requirements.txt
 ```
 
-## الأدوات الاختيارية (موصى بها)
+## الأدوات الموصى بها
 
-للحصول على أفضل أداء أثناء الاستكشاف، يُفضل تثبيت الأدوات التالية وإضافتها إلى متغيرات النظام (PATH):
+للحصول على أفضل نتائج أثناء الاستكشاف، يُفضل تثبيت الأدوات التالية وإضافتها إلى متغيرات النظام (PATH):
 
 - subfinder
 - assetfinder
@@ -86,50 +92,76 @@ python3 hunter.py -u https://example.com --proxy http://127.0.0.1:8080
 
 # 📊 الملفات الناتجة
 
-بعد انتهاء الفحص، تقوم الأداة بإنشاء مجلد يحتوي على التقارير التالية:
+بعد انتهاء الفحص، تقوم الأداة بإنشاء مجلد باسم:
 
 ```
 hunter_reports/
+```
 
+ويحتوي على:
+
+```
+hunter_reports/
 ├── hunter_dashboard.html
 ├── hunter_burp_targets.txt
 ├── findings.json
 └── logs.txt
 ```
 
-## hunter_dashboard.html
+## 📄 hunter_dashboard.html
 
-لوحة تحكم تفاعلية تحتوي على:
+لوحة تحكم تفاعلية تعرض:
 
-- الثغرات المحتملة
-- نتائج تحليل JavaScript
+- نتائج الفحص
+- تحليل JavaScript
 - ملفات Source Map
 - رؤوس الحماية
 - إعدادات Cookies
-- التقنيات المستخدمة
 - الملفات الحساسة
+- التقنيات المستخدمة
 - الروابط المخفية
+- النتائج المصنفة حسب الخطورة
 
-## hunter_burp_targets.txt
+## 🎯 hunter_burp_targets.txt
 
-قائمة بجميع الروابط المكتشفة لتسهيل إعادة اختبارها باستخدام Burp Suite.
+قائمة بجميع الروابط المكتشفة لتسهيل إعادة اختبارها يدويًا باستخدام Burp Suite.
+
+## 📋 findings.json
+
+ملف JSON يحتوي على جميع النتائج لتسهيل معالجتها أو استخدامها في أدوات أخرى.
+
+## 📝 logs.txt
+
+سجل كامل لعملية الفحص.
 
 ---
 
 # 🔍 ما الذي تقوم الأداة باكتشافه؟
 
-- المفاتيح والتوكنات المسربة داخل JavaScript
-- الروابط وواجهات API المخفية
-- ملفات Source Map
+- JavaScript Secrets
+- API Keys
+- JWT Tokens
+- Bearer Tokens
+- Hidden API Endpoints
+- Source Maps
+- Hidden Routes
+- GraphQL Endpoints
+- Swagger / OpenAPI
+- WebSocket URLs
+- Firebase Configurations
+- AWS Keys
+- Google API Keys
+- Stripe Keys
+- GitHub Tokens
+- Cloud Storage References
 - الملفات الحساسة المكشوفة
-- إعدادات Cookies غير الآمنة
-- رؤوس الحماية المفقودة
-- ملفات الإعدادات المكشوفة
-- التقنيات المستخدمة
-- النطاقات الفرعية
-- روابط Wayback Machine
-- الأدلة المفتوحة (Open Directories)
-- الملفات والموارد العامة
+- ملفات النسخ الاحتياطية
+- ملفات الإعدادات
+- Cookie Misconfigurations
+- Missing Security Headers
+- Technology Fingerprinting
+- Subdomains
+- Wayback URLs
 
 ---
 
@@ -143,10 +175,16 @@ hunter_reports/
 127.0.0.1:8080
 ```
 
-ولتعطيله استخدم:
+لتعطيل البروكسي:
 
 ```bash
---no-proxy
+python3 hunter.py --no-proxy
+```
+
+أو استخدام بروكسي آخر:
+
+```bash
+python3 hunter.py --proxy http://IP:PORT
 ```
 
 ---
@@ -157,7 +195,7 @@ hunter_reports/
 - requests
 - urllib3
 
-ويُفضل تثبيت:
+ويُنصح أيضًا بتثبيت:
 
 - subfinder
 - assetfinder
@@ -167,7 +205,9 @@ hunter_reports/
 
 # ⚠️ إخلاء المسؤولية
 
-تم تطوير **HUNTER** لأغراض تعليمية وللاستخدام في عمليات الاختبار الأمني المصرح بها وبرامج **Bug Bounty** فقط.
+تم تطوير **HUNTER** لأغراض تعليمية وللاستخدام في الاختبارات الأمنية المصرح بها وبرامج **Bug Bounty** فقط.
+
+لا تقوم الأداة بتنفيذ عمليات استغلال تلقائية، وإنما تركز على **جمع المعلومات، والتحليل، والكشف عن المؤشرات الأمنية** لمساعدة الباحث في التحقق اليدوي.
 
 يتحمل المستخدم كامل المسؤولية عن استخدام الأداة، ويجب التأكد من وجود تصريح قانوني قبل إجراء أي فحص على أي نظام أو موقع.
 
@@ -175,6 +215,15 @@ hunter_reports/
 
 ---
 
+# 🤝 المساهمة
+
+نرحب بجميع المساهمات التي تساعد في تطوير الأداة وتحسينها.
+
+يمكنك فتح:
+
+- Issue
+- Pull Request
+- Feature Request
 
 ---
 
