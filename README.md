@@ -32,6 +32,18 @@
 - 🚀 وضع الفحص الشامل (Comprehensive)
 
 ---
+## 📸 Screenshots
+
+### Main Menu
+
+![Main Menu](images/menu.png)
+
+### Scan Example
+
+![Scan](images/scan.png)
+
+
+
 
 
 
