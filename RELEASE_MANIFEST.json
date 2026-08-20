@@ -1,0 +1,9 @@
+{
+  "name": "Hunter",
+  "version": "6.0.0",
+  "release_type": "standalone_rebuild",
+  "description": "Standalone HUNTER v6 with evidence-first autonomous verification.",
+  "github_target": "Mamduh-911/Hunter",
+  "main_entry": "hunter.py",
+  "files": 32
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hunter-security-agent"
+version = "6.0.0"
+description = "Autonomous web security verification agent for authorized testing"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "requests>=2.31,<3",
+  "urllib3>=2.0,<3"
+]
+
+[project.scripts]
+hunter = "hunter_agent.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
